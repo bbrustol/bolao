@@ -1,0 +1,119 @@
+ h1 {
+     color:green;  
+ }
+
+/*
+Ateneo Blue (#003C78), 
+Sea Blue (#046A97), 
+Cyan Cornflower Blue (#2988AD), 
+Ivory (#FDFFEA), 
+Deep Saffron (#FEA534)
+Portland Orange (#FF6138).
+*/
+
+
+ /*The Those Dark Blues Color Scheme palette has 5 colors which are Rich Black [FOGRA29] (#04031C), Cetacean Blue (#080B35), Cetacean Blue (#0E1946), Space Cadet (#152A5D) and Rainbow Indigo (#1D3C69).*/
+html, body {
+    height: 100%;
+    color:black;
+    background-image: linear-gradient(-20deg, #1f299c 70%, #0373ff);
+    position:static;  
+}
+
+.boxContainer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background-color: #16215b;
+
+    border-radius: 10px;
+    padding: 20px;
+ }
+
+ .logo {
+    position: relative;
+    float: left;
+    padding: 0;
+    top: 12%;
+    width: 400px;
+    height: 75%;
+ }
+ .boxLogin {
+    position: relative;
+    float: left;
+    top: 25%;
+ }
+
+ .boxLogin input {
+    width: 90%;
+    height: 10%;
+    font-size: 20px;
+
+    margin-bottom: 20px;
+    margin-left: 5%;
+ }
+
+  .boxLogin button {
+    width: 90%;
+    height: 10%;
+    background-color: #FEA534;
+    font-size: 20px;
+
+    margin-top: 20px;
+    margin-left: 5%;
+ }
+
+.forgotPass {
+    position: relative;
+    float: left;
+    width: 90%;
+
+    color: #fff;
+    text-align: center;
+
+    margin-top: 10px;
+    margin-left: 5%;
+  }
+
+.line {
+    position: relative;
+    float: left;
+
+    width: 90%;
+
+    border: 1px dashed #2988AD;
+
+    margin-top: 20px;
+    margin-left: 5%;
+ }
+
+ .register { 
+    position: relative;
+    width: 90%;
+    height: 60px;
+    align-content: center;
+    vertical-align: middle;
+    margin-left: 10px;
+
+  }
+
+ .button {
+    position: relative;
+    float: left;
+    width: 60px;
+    align-content: center;
+    vertical-align: middle;
+    margin-left: 20px;
+    left: 35%;
+    top: 50%;
+    color: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+ }
+
+

@@ -1,0 +1,102 @@
+{
+	"usuario": {
+  		"email": "bla@bla.com",
+  		"nome": "John Doe",
+  		"ultimoLogin": "2022-11-04T14:11:56.586Z",
+  		"id": 0
+	},
+	"times": [
+  		{
+    		"nome": "Mé faiz elementum girarzis",
+    		"urlLogo": "blabla.png",
+    		"id": 0
+  		},
+  		{
+    		"nome": "Mussum Ipsum, cacilds vidis litro abertis",
+    		"urlLogo": "blabla.png",
+    		"id": 1
+  		}
+	],
+	"partidas": [
+		{
+		    "ligaId": 0,
+		    "mandanteId": 0,
+		    "visitanteId": 1,
+		    "data": "2022-11-04T14:51:57.189Z",
+		    "tipo": "GRUPOS",
+		    "id": 0,
+		    "resultado": {
+				"golsMandante": 0,
+				"golsVisitante": 0,
+				"visitanteVencedorPenaltis": true,
+				"mandanteVencedorPenaltis": true
+	    	}
+	  	},
+	  	{
+		    "ligaId": 0,
+		    "mandanteId": 0,
+		    "visitanteId": 1,
+		    "data": "2022-11-04T14:51:57.189Z",
+		    "tipo": "GRUPOS",
+		    "id": 1,
+		    "resultado": {
+				"golsMandante": 0,
+				"golsVisitante": 0,
+				"visitanteVencedorPenaltis": true,
+				"mandanteVencedorPenaltis": true
+	    	}
+	  	},
+	  	{
+		    "ligaId": 0,
+		    "mandanteId": 0,
+		    "visitanteId": 1,
+		    "data": "2022-11-04T14:51:57.189Z",
+		    "tipo": "GRUPOS",
+		    "id": 2,
+		    "resultado": {
+				"golsMandante": 0,
+				"golsVisitante": 0,
+				"visitanteVencedorPenaltis": true,
+				"mandanteVencedorPenaltis": true
+	    	}
+	  	},
+	  	{
+		    "ligaId": 0,
+		    "mandanteId": 0,
+		    "visitanteId": 1,
+		    "data": "2022-11-04T14:51:57.189Z",
+		    "tipo": "GRUPOS",
+		    "id": 3,
+		    "resultado": {
+				"golsMandante": 0,
+				"golsVisitante": 0,
+				"visitanteVencedorPenaltis": true,
+				"mandanteVencedorPenaltis": true
+	    	}
+	  	}
+	],
+	"ligas": {
+		"nome": "World Cup",
+		"descricao": "World Cup",
+		"inicio": "2022-11-04T14:53:53.709Z",
+		"fim": "2022-11-04T14:53:53.709Z",
+		"id": 0
+	},
+	"bolao": [
+		{
+		    "nome": "Cacildis",
+		    "ligaId": 0,
+		    "classificacao": [
+		    	{
+			        "pontuacaoTotal": 1000,
+			        "key": {
+						"usuarioId": 0,
+						"bolaoId": 0
+			        },
+			        "ativo": true
+		      	}
+		    ],
+		    "id": 0
+		}
+	]
+}
