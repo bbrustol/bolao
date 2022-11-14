@@ -29,7 +29,7 @@
 				"golsMandante": 0,
 				"golsVisitante": 0,
 				"visitanteVencedorPenaltis": true,
-				"mandanteVencedorPenaltis": true
+				"mandanteVencedorPenaltis": false
 	    	}
 	  	},
 	  	{
@@ -40,10 +40,10 @@
 		    "tipo": "GRUPOS",
 		    "id": 1,
 		    "resultado": {
-				"golsMandante": 0,
+				"golsMandante": 2,
 				"golsVisitante": 0,
-				"visitanteVencedorPenaltis": true,
-				"mandanteVencedorPenaltis": true
+				"visitanteVencedorPenaltis": false,
+				"mandanteVencedorPenaltis": false
 	    	}
 	  	},
 	  	{
@@ -53,12 +53,7 @@
 		    "data": "2022-11-04T14:51:57.189Z",
 		    "tipo": "GRUPOS",
 		    "id": 2,
-		    "resultado": {
-				"golsMandante": 0,
-				"golsVisitante": 0,
-				"visitanteVencedorPenaltis": true,
-				"mandanteVencedorPenaltis": true
-	    	}
+		    "resultado": null
 	  	},
 	  	{
 		    "ligaId": 0,
@@ -67,11 +62,57 @@
 		    "data": "2022-11-04T14:51:57.189Z",
 		    "tipo": "GRUPOS",
 		    "id": 3,
+		    "resultado": null
+	  	}
+	],
+	,
+	"palpite": [
+		{
+		    "partidaId": 0,
+		    "bolaoId": 0,
+		    "usuarioId": 0,
+		    "mandanteId": 0,
+		    "visitanteId": 1,
+		    "data": "2022-11-04T14:51:57.189Z",
+		    "tipoResultadoPalpite": "GRUPOS",
+		    "id": 0,
 		    "resultado": {
 				"golsMandante": 0,
 				"golsVisitante": 0,
 				"visitanteVencedorPenaltis": true,
-				"mandanteVencedorPenaltis": true
+				"mandanteVencedorPenaltis": false
+	    	}
+	  	},
+	  	{
+		    "partidaId": 1,
+		    "bolaoId": 0,
+		    "usuarioId": 0,
+		    "mandanteId": 0,
+		    "visitanteId": 1,
+		    "data": "2022-11-04T14:51:57.189Z",
+		    "tipoResultadoPalpite": "GRUPOS",
+		    "id": 1,
+		    "resultado": {
+				"golsMandante": 0,
+				"golsVisitante": 0,
+				"visitanteVencedorPenaltis": true,
+				"mandanteVencedorPenaltis": false
+	    	}
+	  	},
+	  	{
+		    "partidaId": 2,
+		    "bolaoId": 0,
+		    "usuarioId": 0,
+		    "mandanteId": 0,
+		    "visitanteId": 1,
+		    "data": "2022-11-04T14:51:57.189Z",
+		    "tipoResultadoPalpite": "GRUPOS",
+		    "id": 2,
+		    "resultado": {
+				"golsMandante": 0,
+				"golsVisitante": 2,
+				"visitanteVencedorPenaltis": false,
+				"mandanteVencedorPenaltis": false
 	    	}
 	  	}
 	],

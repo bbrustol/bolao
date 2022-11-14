@@ -30,6 +30,15 @@ export class UsuarioService {
       )
   }
 
+   // Obtem todos os carros
+  getUsuario(): Observable<Usuario[]> {
+    return this.httpClient.get<Usuario[]>(this.url)
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+  }
+
+
 
   // Manipulação de erros
   handleError(error: HttpErrorResponse) {
