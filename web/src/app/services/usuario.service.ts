@@ -10,7 +10,7 @@ import { Usuario } from '../models/usuario';
 
 export class UsuarioService {
 
-  url = 'http://localhost:3000/usuario'; // api rest fake
+  url = 'http://localhost:8080/api/usuarios'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

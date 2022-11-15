@@ -10,7 +10,7 @@ import { Times } from '../models/times';
 
 export class TimesService {
 
-  url = 'http://localhost:3000/times'; // api rest fake
+  url = 'http://localhost:8080/api/times'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

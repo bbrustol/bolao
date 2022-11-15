@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="bolao-palpite.component.css">
+</head>
+
+<body>
+
+    <div class="boxContainer">
+
+        <table>
+            <tr>
+                <th colspan="3">Classificatórias</th>
+            </tr>
+
+            <tr *ngFor="let game of gameList">
+                <td>{{game.mandanteNome}}</td>
+                <td>
+                    <ul class="placar">
+                        <li><input type="text" name="{{game.mandanteNome}}" maxlength="2" size="2"
+                                value="{{game.mandanteGols}}" /></li>
+                        <li>X</li>
+                        <li><input type="text" name="{{game.mandanteNome}}" maxlength="2" size="2"
+                                value="{{game.visitanteGols}}" /></li>
+                    </ul>
+                    <ul class="placar">
+                        <li>
+                            <div class="radioContainer">
+                                <input type="radio" checked="checked" name="radio">
+                                <span class="checkmark"></span>
+                            </div>
+                        </li>
+                        <li>Vencedor nos penaltis</li>
+                        <li>
+                            <div class="radioContainer">
+                                <input type="radio" name="radio">
+                                <span class="checkmark"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </td>
+                <td>{{game.visitanteNome}}</td>
+            </tr>
+        </table>
+    </div>
+</body>

@@ -10,7 +10,7 @@ import { Bolao } from '../models/bolao';
 
 export class BolaoService {
 
-  url = 'http://localhost:3000/bolao'; // api rest fake
+  url = 'http://localhost:8080/api/boloes'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

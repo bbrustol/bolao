@@ -1,5 +1,3 @@
-import { ResultadoPartidas } from '../models/resultadoPartidas';
-
 export interface GameModel {
     partidaId: number;
     mandanteId: number;

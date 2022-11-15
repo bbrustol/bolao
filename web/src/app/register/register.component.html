@@ -1,0 +1,43 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="./register.component.css">
+</head>
+
+<body>
+	<form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+		<div class="boxContainer">
+			<div class="boxRegister">
+				<input type="text" placeholder="Nome" class="form-control" name="nome" [(ngModel)]="form.nome" required
+					#nome="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nome.errors }" />
+				<input type="email" placeholder="Email" class="form-control" name="email" [(ngModel)]="form.email" required email
+					#email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.errors }" />
+				<div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+					<div *ngIf="email.errors['required']">Email is required</div>
+					<div *ngIf="email.errors['email']">
+						Email must be a valid email address
+					</div>
+				</div>
+				<input type="password" placeholder="Senha" class="form-control" name="password"
+					[(ngModel)]="form.password" required minlength="6" #password="ngModel"
+					[ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
+				<input type="password" placeholder="Repetir Senha" class="form-control" name="repeatPassword"
+					[(ngModel)]="form.repeatPassword" required minlength="6" #repeatPassword="ngModel"
+					[ngClass]="{ 'is-invalid': f.submitted && repeatPassword.errors }" />
+
+				<div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+					<div *ngIf="password.errors['required']">Password is required</div>
+					<div *ngIf="password.errors['minlength']">
+						Password must be at least 6 characters
+					</div>
+				</div>
+				<button>Registrar</button>
+				<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+					Erro no Registro!<br />{{ errorMessage }}
+				  </div>
+			</div>
+		</div>
+	</form>
+</body>
+
+</html>

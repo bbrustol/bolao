@@ -6,18 +6,24 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { BolaoPalpiteComponent } from './bolao-palpite/bolao-palpite.component';
+import { httpInterceptorProviders } from './helper/http.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    BolaoPalpiteComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

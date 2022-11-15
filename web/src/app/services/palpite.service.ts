@@ -10,7 +10,7 @@ import { Palpite } from '../models/palpite';
 
 export class PalpiteService {
 
-  url = 'http://localhost:3000/palpite'; // api rest fake
+  url = 'http://localhost:8080/api/palpites'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

@@ -1,55 +1,19 @@
-<div class="container">
+<div id="app">
+  <div class="boxTop">
+    <div class="box">
+      <select>
+        <option>Bolao 1</option>
+        <option>Bolao 2</option>
+      </select>
+    </div>
 
-<div class="boxTop">
-  <div class="box">
-    <select>
-      <option>Option 1</option>
-      <option>Option 2</option>
-      <option>Option 3</option>
-      <option>Option 4</option>
-      <option>Option 5</option>
-    </select>
+    <button [routerLink]="'bolao-palpites'">Palpites</button>
+
+    <button>Classificacao</button>
+
+    <button>Regras</button>
   </div>
-
-  <button>Guess</button>
-
-  <button>Classification</button>
-
-  <button>Rules</button>
-</div>
-<div class="boxContainer">
-  
-  <table>
-        <tr>
-            <th colspan="3">Classificatórias</th>
-        </tr>
-         
-        <tr *ngFor="let game of gameList">
-          <td>{{game.mandanteNome}}</td>
-            <td>
-              <ul class="placar">
-                <li><input type="text" name="{{game.mandanteNome}}" maxlength="2" size="2" value="{{game.mandanteGols}}" /></li>
-                <li>X</li>
-                <li><input type="text" name="{{game.mandanteNome}}" maxlength="2" size="2" value="{{game.visitanteGols}}" /></li>
-              </ul>
-              <ul class="placar">
-                <li>
-                  <div class="radioContainer">
-                    <input type="radio" checked="checked" name="radio">
-                    <span class="checkmark"></span>
-                  </div>
-                </li>
-                <li>Vencedor nos penaltis</li>
-                <li>
-                  <div class="radioContainer">
-                    <input type="radio" name="radio">
-                    <span class="checkmark"></span>
-                </div>
-                </li>
-              </ul>
-            </td>
-          <td>{{game.visitanteNome}}</td>
-         </tr>
-    </table>
-</div>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </div>

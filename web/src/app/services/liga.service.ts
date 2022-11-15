@@ -10,7 +10,7 @@ import { Liga } from '../models/liga';
 
 export class LigaService {
 
-  url = 'http://localhost:3000/liga'; // api rest fake
+  url = 'http://localhost:8080/ligas'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
