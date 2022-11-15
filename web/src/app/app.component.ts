@@ -98,19 +98,27 @@ export class AppComponent implements OnInit {
   getBolao() {
     this.bolaoService.getBolao().subscribe((bolao: Bolao[]) => {
       this.bolaoList = bolao;
-      this.semaphore();
+      this.createModel();
     });
   }
 
-  semaphore() {
+  createModel() {
     for (let i = 0; i < this.partidasList.length; i++) {
       let mandanteNome:string = "";
       let mandanteUrl:string = "";
       let visitanteNome:string = "";
       let visitanteUrl:string = "";
 
+      let mandanteGols:number = -1;
+      let mandantePenaltis:boolean = false;
+      let visitanteGols:number = -1;
+      let visitantePenaltis:boolean = false;
+
+      let isEnabledPenaltis:boolean = false;
+      let endGame: boolean = false
+
       for (let m = 0; m < this.timesList.length; m++) {
-        if (this.partidasList[i].mandantedId == this.timesList[m].id) { 
+        if (this.partidasList[i].mandanteId == this.timesList[m].id) { 
           mandanteNome = this.timesList[m].nome;
           mandanteUrl = this.timesList[m].urlLogo
         }
@@ -120,19 +128,37 @@ export class AppComponent implements OnInit {
           visitanteUrl = this.timesList[m].urlLogo
         }
       }
+
+      for (let m = 0; m < this.palpiteList.length; m++) {
+        if (this.partidasList[i].id == this.palpiteList[m].partidaId) { 
+            mandanteGols = this.palpiteList[m].resultado.golsMandante;
+            visitanteGols = this.palpiteList[m].resultado.golsVisitante;
+            mandantePenaltis = this.palpiteList[m].resultado.mandanteVencedorPenaltis;
+            visitantePenaltis = this.palpiteList[m].resultado.visitanteVencedorPenaltis;
+        }
+      }
+
+      if (this.partidasList[i].resultado != null) {
+        endGame = true;
+      }
+
+      if (this.partidasList[i].tipo == "GRUPO") { isEnabledPenaltis  = false }
     
       this.gameList.push ({
-        mandanteId: this.partidasList[i].mandantedId,
+        partidaId: this.partidasList[i].id,
+        mandanteId: this.partidasList[i].mandanteId,
         mandanteNome: mandanteNome,
         mandanteUrl:  mandanteUrl,
-        mandanteGols: this.partidasList[i].resultado.golsMandante,
-        mandanteVencedorPenaltis: this.partidasList[i].resultado.mandanteVencedorPenaltis,
+        mandanteGols: mandanteGols,
+        mandanteVencedorPenaltis: mandantePenaltis,
         visitanteId: this.partidasList[i].visitanteId,
         visitanteNome: visitanteNome,
         visitanteUrl:  visitanteUrl,
-        VisitanteGols: this.partidasList[i].resultado.golsVisitante,
-        visitanteVencedorPenaltis: this.partidasList[i].resultado.visitanteVencedorPenaltis,
+        visitanteGols: visitanteGols,
+        visitanteVencedorPenaltis: visitantePenaltis,
         tipo: this.partidasList[i].tipo,
+        enabledPenaltis: isEnabledPenaltis,
+        endGame: endGame,
       });
     }
   }

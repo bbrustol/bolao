@@ -1,6 +1,7 @@
 import { ResultadoPartidas } from '../models/resultadoPartidas';
 
 export interface GameModel {
+    partidaId: number;
     mandanteId: number;
     mandanteNome: string;
     mandanteUrl: string;
@@ -9,7 +10,9 @@ export interface GameModel {
     visitanteId: number;
     visitanteNome: string;
     visitanteUrl: string;
-    VisitanteGols: number;
+    visitanteGols: number;
     visitanteVencedorPenaltis: boolean;
     tipo: string;
+    enabledPenaltis: boolean;
+    endGame: boolean;
 }

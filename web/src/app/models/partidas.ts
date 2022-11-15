@@ -2,7 +2,7 @@ import { ResultadoPartidas } from '../models/resultadoPartidas';
 
 export interface Partidas {
     ligaId: number;
-    mandantedId: number;
+    mandanteId: number;
     visitanteId: number;
     data: string;
     tipo: string;
