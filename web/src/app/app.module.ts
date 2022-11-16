@@ -10,13 +10,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BolaoPalpiteComponent } from './bolao-palpite/bolao-palpite.component';
 import { httpInterceptorProviders } from './helper/http.interceptor';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    BolaoPalpiteComponent],
+    BolaoPalpiteComponent,
+    NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

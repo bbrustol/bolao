@@ -17,7 +17,7 @@ export class PalpiteService {
   constructor(private httpClient: HttpClient) { }
 
 
-// Headers
+  // Headers
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
@@ -28,6 +28,11 @@ export class PalpiteService {
       .pipe(
         retry(2),
         catchError(this.handleError))
+  }
+
+  getPalpitesByBolaoId(bolaoId: number): Observable<Palpite[]> {
+    return this.httpClient.get<Palpite[]>(this.url + `/search?bolao.id=${bolaoId}`)
+      .pipe(retry(2), catchError(this.handleError))
   }
 
   getPalpiteById(id: number): Observable<Palpite> {

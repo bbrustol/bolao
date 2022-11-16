@@ -1,19 +1,5 @@
 <div id="app">
-  <div class="boxTop">
-    <div class="box">
-      <select>
-        <option>Bolao 1</option>
-        <option>Bolao 2</option>
-      </select>
-    </div>
-
-    <button [routerLink]="'bolao-palpites'">Palpites</button>
-
-    <button>Classificacao</button>
-
-    <button>Regras</button>
-    <p>Ola, {{usuario}} </p>
-  </div>
+  <app-navbar></app-navbar>
   <div class="container">
     <router-outlet></router-outlet>
   </div>

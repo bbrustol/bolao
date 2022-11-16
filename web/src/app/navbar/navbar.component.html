@@ -1,0 +1,22 @@
+<head>
+    <link rel="stylesheet" href="navbar.component.css">
+</head>
+
+<body>
+    <div class="boxTop">
+        <div class="box">
+            <select *ngFor="let bolao of boloes" [(ngModel)]="bolaoAtivo">
+                <option value="{{bolao.id}}">{{bolao.nome}}</option>
+            </select>
+            <select *ngIf="boloes.length == 0">
+                <option>Bolao Bem Bolado</option>
+            </select>
+        </div>
+
+        <button [routerLink]="'bolao-palpites/' + bolaoAtivo">Palpites</button>
+
+        <button>Classificacao</button>
+
+        <button>Regras</button>
+    </div>
+</body>

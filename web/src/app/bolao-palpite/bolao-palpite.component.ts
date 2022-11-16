@@ -14,10 +14,9 @@ import { Bolao } from '../models/bolao';
 import { GameModel } from '../models/gameModel';
 import { Palpite } from '../models/palpite';
 
-import { NgForm } from '@angular/forms';
-
 import * as moment from 'moment';
 import { ICONS_BASE_PATH } from '../helper/constants';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bolao-palpite',
@@ -42,7 +41,8 @@ export class BolaoPalpiteComponent implements OnInit {
     private partidasService: PartidasService,
     private palpiteService: PalpiteService,
     private ligaService: LigaService,
-    private bolaoService: BolaoService
+    private bolaoService: BolaoService,
+    private route: ActivatedRoute
 
   ) {
     this.usuarioList = [];
@@ -64,7 +64,7 @@ export class BolaoPalpiteComponent implements OnInit {
     });
   }
 
-    getUsuario() {
+  getUsuario() {
     this.usuarioService.getUsuario().subscribe((usuario: Usuario[]) => {
       this.usuarioList = usuario;
       this.getTimes();
@@ -81,15 +81,16 @@ export class BolaoPalpiteComponent implements OnInit {
   getPartidas() {
     this.partidasService.getPartidas().subscribe((partidas: Partidas[]) => {
       this.partidasList = partidas.sort((a, b) => (moment(a.data).unix() - moment(b.data).unix()));
-      this.getPalpite();
     });
+    this.getPalpite()
   }
 
-    getPalpite() {
-    this.palpiteService.getPalpite().subscribe((palpite: Palpite[]) => {
-      this.palpiteList = palpite;
-      this.getBolao();
-    });
+  getPalpite() {
+    this.palpiteService.getPalpitesByBolaoId(Number.parseInt(this.route.snapshot.paramMap.get('bolaoId') || "1"))
+      .subscribe((palpite: Palpite[]) => {
+        this.palpiteList = palpite;
+        this.createModel();
+      });
   }
 
   getLigaById(id: number) {
@@ -98,70 +99,63 @@ export class BolaoPalpiteComponent implements OnInit {
     });
   }
 
-  getBolao() {
-    this.bolaoService.getBolao().subscribe((bolao: Bolao[]) => {
-      this.bolaoList = bolao;
-      this.createModel();
-    });
-  }
-
   createModel() {
-    for (let i = 0; i < this.partidasList.length; i++) {
-      let mandanteNome:string = "";
-      let mandanteUrl:string = "";
-      let visitanteNome:string = "";
-      let visitanteUrl:string = "";
+    for (const partida of this.partidasList) {
+      let mandanteNome: string = "";
+      let mandanteUrl: string = "";
+      let visitanteNome: string = "";
+      let visitanteUrl: string = "";
 
-      let mandanteGols:number = -1;
-      let mandantePenaltis:boolean = false;
-      let visitanteGols:number = -1;
-      let visitantePenaltis:boolean = false;
+      let mandanteGols: number | undefined;
+      let mandantePenaltis: boolean = false;
+      let visitanteGols: number | undefined;
+      let visitantePenaltis: boolean = false;
 
-      let isEnabledPenaltis:boolean = false;
+      let isEnabledPenaltis: boolean = false;
       let endGame: boolean = false
 
       for (let m = 0; m < this.timesList.length; m++) {
-        if (this.partidasList[i].mandanteId == this.timesList[m].id) { 
+        if (partida.mandanteId == this.timesList[m].id) {
           mandanteNome = this.timesList[m].nome;
           mandanteUrl = this.timesList[m].urlLogo || ''
         }
 
-        if (this.partidasList[i].visitanteId == this.timesList[m].id) { 
+        if (partida.visitanteId == this.timesList[m].id) {
           visitanteNome = this.timesList[m].nome;
           visitanteUrl = this.timesList[m].urlLogo || ''
         }
       }
 
-      for (let m = 0; m < this.palpiteList.length; m++) {
-        if (this.partidasList[i].id == this.palpiteList[m].partidaId) { 
-            mandanteGols = this.palpiteList[m].resultado ? this.palpiteList[m].resultado.golsMandante : -1;
-            visitanteGols = this.palpiteList[m].resultado ? this.palpiteList[m].resultado.golsVisitante : -1;
-            mandantePenaltis = this.palpiteList[m].resultado ? this.palpiteList[m].resultado.mandanteVencedorPenaltis : false;
-            visitantePenaltis = this.palpiteList[m].resultado ? this.palpiteList[m].resultado.visitanteVencedorPenaltis : false;
-        }
+      const palpite = this.palpiteList.find(palpite => palpite.partidaId == partida.id)
+
+      if (palpite) {
+        mandanteGols = palpite.resultado.golsMandante
+        visitanteGols = palpite.resultado.golsVisitante
+        mandantePenaltis = palpite.resultado.mandanteVencedorPenaltis
+        visitantePenaltis = palpite.resultado.visitanteVencedorPenaltis
       }
 
-      if (this.partidasList[i].resultado != null) {
+      if (partida.resultado != null) {
         endGame = true;
       }
 
-      if (this.partidasList[i].tipo == "GRUPO") { isEnabledPenaltis  = false }
+      if (partida.tipo == "GRUPO") { isEnabledPenaltis = false }
 
-      const data = new Date(this.partidasList[i].data)
-    
-      this.gameList.push ({
-        partidaId: this.partidasList[i].id,
-        mandanteId: this.partidasList[i].mandanteId,
+      const data = new Date(partida.data)
+
+      this.gameList.push({
+        partidaId: partida.id,
+        mandanteId: partida.mandanteId,
         mandanteNome: mandanteNome,
-        mandanteUrl:  ICONS_BASE_PATH + mandanteUrl,
+        mandanteUrl: ICONS_BASE_PATH + mandanteUrl,
         mandanteGols: mandanteGols,
         mandanteVencedorPenaltis: mandantePenaltis,
-        visitanteId: this.partidasList[i].visitanteId,
+        visitanteId: partida.visitanteId,
         visitanteNome: visitanteNome,
-        visitanteUrl:  ICONS_BASE_PATH + visitanteUrl,
+        visitanteUrl: ICONS_BASE_PATH + visitanteUrl,
         visitanteGols: visitanteGols,
         visitanteVencedorPenaltis: visitantePenaltis,
-        tipo: this.partidasList[i].tipo,
+        tipo: partida.tipo,
         enabledPenaltis: isEnabledPenaltis,
         endGame: endGame,
         data: data.toLocaleString()

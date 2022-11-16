@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Bolao } from '../models/bolao';
 import { AuthService } from '../services/auth.service';
+import { BolaoService } from '../services/bolao.service';
 import { StorageService } from '../services/storage.service';
 
 @Component({
@@ -16,14 +18,24 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
 
-  constructor(private authService: AuthService, private storageService: StorageService, private _router: Router) { }
+  constructor(private authService: AuthService, private storageService: StorageService,
+    private bolaoService: BolaoService, private _router: Router) { }
 
   ngOnInit(): void {
-    if (this. storageService.isLoggedIn()) {
+    if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
-      this._router.navigate(['bolao-palpites'])
+      this.bolaoService.getBolao().subscribe({
+        next: data => {
+          if (data && data.length > 0) {
+            this._router.navigate(['bolao-palpites/' + data[0].id])
+          }
+        },
+        error: err => {
+          console.log(err)
+        }
+      })
+
     }
   }
 

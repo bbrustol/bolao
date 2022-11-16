@@ -9,9 +9,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
-    path: 'bolao-palpites', component: BolaoPalpiteComponent, canActivate: [AuthGuard],
+    path: 'bolao-palpites/:bolaoId', component: BolaoPalpiteComponent, canActivate: [AuthGuard],
   },
-  { path: '', redirectTo: '/bolao-palpites', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
