@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 
 export class PartidasService {
 
-  url = environment + 'partidas'; // api rest fake
+  url = environment.BASE_URL + 'partidas'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 
 export class BolaoService {
 
-  url = environment + 'boloes'; // api rest fake
+  url = environment.BASE_URL + 'boloes'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

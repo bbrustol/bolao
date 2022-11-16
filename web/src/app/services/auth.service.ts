@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from '../../environments/environment';
 
-const AUTH_API = environment + 'auth/';
+const AUTH_API = environment.BASE_URL + 'auth/';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

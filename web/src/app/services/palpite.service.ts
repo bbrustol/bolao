@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 
 export class PalpiteService {
 
-  url = environment + 'palpites'; // api rest fake
+  url = environment.BASE_URL + 'palpites'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

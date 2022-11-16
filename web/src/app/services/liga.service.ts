@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 
 export class LigaService {
 
-  url = environment + 'ligas'; // api rest fake
+  url = environment.BASE_URL + 'ligas'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 
 export class UsuarioService {
 
-  url = environment + 'usuarios'; // api rest fake
+  url = environment.BASE_URL + 'usuarios'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
