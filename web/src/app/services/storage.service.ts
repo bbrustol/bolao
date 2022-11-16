@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-
-const USER_KEY = 'auth-user';
+import { USER_KEY } from '../helper/constants';
 
 @Injectable({
   providedIn: 'root'

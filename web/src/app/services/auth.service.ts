@@ -33,6 +33,7 @@ export class AuthService {
             nome: username,
             email,
             senha: password,
+            confirmarSenha: password
           },
           httpOptions
         );

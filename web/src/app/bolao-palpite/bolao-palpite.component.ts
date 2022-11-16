@@ -16,6 +16,9 @@ import { Palpite } from '../models/palpite';
 
 import { NgForm } from '@angular/forms';
 
+import * as moment from 'moment';
+import { ICONS_BASE_PATH } from '../helper/constants';
+
 @Component({
   selector: 'app-bolao-palpite',
   templateUrl: './bolao-palpite.component.html',
@@ -77,7 +80,7 @@ export class BolaoPalpiteComponent implements OnInit {
 
   getPartidas() {
     this.partidasService.getPartidas().subscribe((partidas: Partidas[]) => {
-      this.partidasList = partidas;
+      this.partidasList = partidas.sort((a, b) => (moment(a.data).unix() - moment(b.data).unix()));
       this.getPalpite();
     });
   }
@@ -143,22 +146,25 @@ export class BolaoPalpiteComponent implements OnInit {
       }
 
       if (this.partidasList[i].tipo == "GRUPO") { isEnabledPenaltis  = false }
+
+      const data = new Date(this.partidasList[i].data)
     
       this.gameList.push ({
         partidaId: this.partidasList[i].id,
         mandanteId: this.partidasList[i].mandanteId,
         mandanteNome: mandanteNome,
-        mandanteUrl:  mandanteUrl,
+        mandanteUrl:  ICONS_BASE_PATH + mandanteUrl,
         mandanteGols: mandanteGols,
         mandanteVencedorPenaltis: mandantePenaltis,
         visitanteId: this.partidasList[i].visitanteId,
         visitanteNome: visitanteNome,
-        visitanteUrl:  visitanteUrl,
+        visitanteUrl:  ICONS_BASE_PATH + visitanteUrl,
         visitanteGols: visitanteGols,
         visitanteVencedorPenaltis: visitantePenaltis,
         tipo: this.partidasList[i].tipo,
         enabledPenaltis: isEnabledPenaltis,
         endGame: endGame,
+        data: data.toLocaleString()
       });
     }
   }

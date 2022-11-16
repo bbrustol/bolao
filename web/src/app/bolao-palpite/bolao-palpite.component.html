@@ -14,16 +14,23 @@
             </tr>
 
             <tr *ngFor="let game of gameList">
+                <td><img src="{{game.mandanteUrl}}" /></td>
                 <td>{{game.mandanteNome}}</td>
                 <td>
                     <ul class="placar">
+                        <li>
+                            {{game.data}}
+                        </li>
+                    </ul>
+                    <ul class="placar">
+
                         <li><input type="text" name="{{game.mandanteNome}}" maxlength="2" size="2"
                                 value="{{game.mandanteGols}}" /></li>
                         <li>X</li>
                         <li><input type="text" name="{{game.mandanteNome}}" maxlength="2" size="2"
                                 value="{{game.visitanteGols}}" /></li>
                     </ul>
-                    <ul class="placar">
+                    <ul *ngIf="game.tipo !== 'GRUPOS'" class="placar">
                         <li>
                             <div class="radioContainer">
                                 <input type="radio" checked="checked" name="radio">
@@ -40,6 +47,7 @@
                     </ul>
                 </td>
                 <td>{{game.visitanteNome}}</td>
+                <td><img src="{{game.visitanteUrl}}" /></td>
             </tr>
         </table>
     </div>

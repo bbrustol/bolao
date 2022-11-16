@@ -3,11 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { BolaoPalpiteComponent } from './bolao-palpite/bolao-palpite.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'bolao-palpites', component: BolaoPalpiteComponent}
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  {
+    path: 'bolao-palpites', component: BolaoPalpiteComponent, canActivate: [AuthGuard],
+  },
+  { path: '', redirectTo: '/bolao-palpites', pathMatch: 'full' }
 ];
 
 @NgModule({
