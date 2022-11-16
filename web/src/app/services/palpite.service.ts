@@ -43,7 +43,6 @@ export class PalpiteService {
       )
   }
 
-
   // Manipulação de erros
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';

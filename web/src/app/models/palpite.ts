@@ -11,3 +11,15 @@ export interface Palpite {
     id: number;
     resultado: ResultadoPartidas;
 }
+
+export interface PalpiteUpsertDTO {
+    partidaId: number,
+    bolaoId: number,
+    resultadoPartida: {
+        golsMandante: number,
+        golsVisitante: number,
+        isMandanteVencedorPenaltis: boolean,
+        isVisitanteVencedorPenaltis: boolean
+    },
+    id: number | undefined
+}

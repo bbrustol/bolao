@@ -1,5 +1,6 @@
 export interface GameModel {
     partidaId: number;
+    palpiteId: number | undefined;
     mandanteId: number;
     mandanteNome: string;
     mandanteUrl: string;
@@ -8,7 +9,7 @@ export interface GameModel {
     visitanteId: number;
     visitanteNome: string;
     visitanteUrl: string;
-    visitanteGols: number | undefined;
+    visitanteGols: number | undefined;
     visitanteVencedorPenaltis: boolean;
     tipo: string;
     enabledPenaltis: boolean;

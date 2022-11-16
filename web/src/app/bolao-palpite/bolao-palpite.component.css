@@ -1,5 +1,6 @@
-h1 {
-    color: green;
+
+ h1 {
+    color:green;  
 }
 
 /*
@@ -13,139 +14,142 @@ Portland Orange (#FF6138).
 
 
 /*The Those Dark Blues Color Scheme palette has 5 colors which are Rich Black [FOGRA29] (#04031C), Cetacean Blue (#080B35), Cetacean Blue (#0E1946), Space Cadet (#152A5D) and Rainbow Indigo (#1D3C69).*/
-html,
-body {
-    width: 100%;
-    height: 100%;
-    color: black;
-    background-color: #1f299c;
-    /*background-image: linear-gradient(-20deg, #1f299c 70%, #0373ff);*/
-    position: static;
+html, body {
+   width: 100%;
+   height: 100%;
+   color:black;
+   background-color: #1f299c;
+   /*background-image: linear-gradient(-20deg, #1f299c 70%, #0373ff);*/
+   position:static;  
 }
 
 .boxContainer {
-    position: absolute;
-    left: 50%;
-    top: 10%;
-    -webkit-transform: translate(-50%, 0%);
-    transform: translate(-50%, 0%);
-    width: 60%;
-    background-color: #16215b;
-    border-radius: 10px;
-    padding: 20px;
+   position: absolute;
+   left: 50%;
+   top:  10%;
+   -webkit-transform: translate(-50%, 0%);
+   transform: translate(-50%, 0%);
+   width: 60%;
+   background-color: #16215b;
+   border-radius: 10px;
+   padding: 20px;
 }
 
-td {
-    text-align: left;
-    padding: 8px;
-    color: #fff;
-    text-align: center;
-}
+table {
+   border-collapse: collapse;
+       width: 100%;
+   }
+     
+   td {
+       text-align: left;
+       padding: 8px;
+       color: #fff;
+       text-align: center;
+   }
 
-th {
-    text-align: left;
-    padding: 8px;
-    color: #fff;
-}
+   th {
+       text-align: left;
+       padding: 8px;
+       color: #fff;
+   }
 
-td input {
-    width: 30px;
-    height: 30px;
-}
-
-tr:nth-child(even) {
-    background-color: #2988AD;
+   td input {
+       width: 30px;
+       height: 30px;
+   }
+     
+   tr:nth-child(even) {
+       background-color: #2988AD;
 }
 
 
 /*button and combobox*/
 .boxTop {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 100%;
-    padding: 20px;
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   -webkit-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
+   width: 60%;
+   height: 100%;
+   padding: 20px;
 }
 
 
-.boxTop button {
-    position: relative;
-    float: right;
-    width: 140px;
-    height: 44px;
-    background-color: #FEA534;
-    font-size: 20px;
+ button {
+   position: relative;
+   float: right;
+   width: 140px;
+   height: 44px;
+   background-color: #FEA534;
+   font-size: 20px;
 
-    margin-top: 20px;
+   margin-top: 20px;
 }
 
 .box {
-    position: absolute;
-    margin-top: 20px;
+ position: absolute;
+     margin-top: 20px;
 }
 
 .box select {
-    background-color: #0563af;
-    color: white;
-    padding: 12px;
-    width: 250px;
-    border: none;
-    font-size: 20px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-    -webkit-appearance: button;
-    appearance: button;
-    outline: none;
+ background-color: #0563af;
+ color: white;
+ padding: 12px;
+ width: 250px;
+ border: none;
+ font-size: 20px;
+ box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+ -webkit-appearance: button;
+ appearance: button;
+ outline: none;
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 1px;
-    text-overflow: '';
+ -webkit-appearance: none;
+ -moz-appearance: none;
+ text-indent: 1px;
+ text-overflow: '';
 
 }
 
 
 .box::before {
-    content: "\21D3";
-    font-family: Arial;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20%;
-    height: 100%;
-    text-align: center;
-    font-size: 28px;
-    line-height: 45px;
-    color: rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
+ content: "\21D3";
+ font-family: Arial;
+ position: absolute;
+ top: 0;
+ right: 0;
+ width: 20%;
+ height: 100%;
+ text-align: center;
+ font-size: 28px;
+ line-height: 45px;
+ color: rgba(255, 255, 255, 0.5);
+ background-color: rgba(255, 255, 255, 0.1);
+ pointer-events: none;
 }
 
 .box:hover::before {
-    color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(255, 255, 255, 0.2);
+ color: rgba(255, 255, 255, 0.6);
+ background-color: rgba(255, 255, 255, 0.2);
 }
 
 .box select option {
-    padding: 30px;
+ padding: 30px;
 }
-
 /*end*/
 
 
 ul.placar {
-    justify-content: center;
-    display: flex;
+justify-content: center;
+ display: flex;
 }
 
 ul.placar li {
-    display: inline;
-    list-style-type: none;
-    float: left;
-    padding: 10px 20px 10px 20px;
-    text-align: center;
+ display:inline;
+ list-style-type: none;
+ float: left;
+ padding: 10px 20px 10px 20px;
+ text-align: center;
 }
 
 
@@ -153,61 +157,61 @@ ul.placar li {
 radio
 */
 .radioContainer {
-    display: block;
-    position: relative;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+ display: block;
+ position: relative;
+ cursor: pointer;
+ -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
 }
 
 /* Hide the browser's default radio button */
 .radioContainer input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+ position: absolute;
+ opacity: 0;
+ cursor: pointer;
 }
 
 /* Create a custom radio button */
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 16px;
-    width: 16px;
-    background-color: #eee;
-    border-radius: 50%;
+ position: absolute;
+ top: 0;
+ left: 0;
+ height: 16px;
+ width: 16px;
+ background-color: #eee;
+ border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
-.radioContainer:hover input~.checkmark {
-    background-color: #ccc;
+.radioContainer:hover input ~ .checkmark {
+ background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-.radioContainer input:checked~.checkmark {
-    background-color: #2196F3;
+.radioContainer input:checked ~ .checkmark {
+ background-color: #2196F3;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+ content: "";
+ position: absolute;
+ display: none;
 }
 
 /* Show the indicator (dot/circle) when checked */
-.radioContainer input:checked~.checkmark:after {
-    display: block;
+.radioContainer input:checked ~ .checkmark:after {
+ display: block;
 }
 
 /* Style the indicator (dot/circle) */
 .radioContainer .checkmark:after {
-    top: 4px;
-    left: 4px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white;
+   top: 4px;
+   left: 4px;
+   width: 8px;
+   height: 8px;
+   border-radius: 50%;
+   background: white;
 }

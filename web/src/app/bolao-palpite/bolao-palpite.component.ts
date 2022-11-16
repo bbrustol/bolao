@@ -17,6 +17,8 @@ import { Palpite } from '../models/palpite';
 import * as moment from 'moment';
 import { ICONS_BASE_PATH } from '../helper/constants';
 import { ActivatedRoute } from '@angular/router';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { ValidatePalpite } from './bolao-palpite.validator';
 
 @Component({
   selector: 'app-bolao-palpite',
@@ -53,16 +55,31 @@ export class BolaoPalpiteComponent implements OnInit {
     this.gameList = [];
   }
 
+  bolaoId: number | undefined;
+
+  formBolao: FormGroup = new FormGroup({
+    palpites: new FormArray([])
+  })
+
   ngOnInit() {
-    this.getTimes()
+    const maybeBolao = this.route.snapshot.paramMap.get('bolaoId')
+    this.bolaoId = maybeBolao ? Number.parseInt(maybeBolao) : undefined
+
+    if (this.bolaoId) {
+      this.bolaoService.getBolaoById(this.bolaoId).subscribe({
+        next: data => {
+          if (data) {
+            this.getLigaById(data.ligaId)
+            this.getTimes()
+          }
+        }, error: err => {
+          console.error(err)
+        }
+      })
+    }
   }
 
-  getUsuarioById(id: number) {
-    this.usuarioService.getUsuarioById(id).subscribe((usuario: Usuario) => {
-      this.usuario = usuario;
-      this.getTimes();
-    });
-  }
+
 
   getUsuario() {
     this.usuarioService.getUsuario().subscribe((usuario: Usuario[]) => {
@@ -81,8 +98,8 @@ export class BolaoPalpiteComponent implements OnInit {
   getPartidas() {
     this.partidasService.getPartidas().subscribe((partidas: Partidas[]) => {
       this.partidasList = partidas.sort((a, b) => (moment(a.data).unix() - moment(b.data).unix()));
+      this.getPalpite()
     });
-    this.getPalpite()
   }
 
   getPalpite() {
@@ -111,6 +128,8 @@ export class BolaoPalpiteComponent implements OnInit {
       let visitanteGols: number | undefined;
       let visitantePenaltis: boolean = false;
 
+      let palpiteId: number | undefined;
+
       let isEnabledPenaltis: boolean = false;
       let endGame: boolean = false
 
@@ -133,6 +152,7 @@ export class BolaoPalpiteComponent implements OnInit {
         visitanteGols = palpite.resultado.golsVisitante
         mandantePenaltis = palpite.resultado.mandanteVencedorPenaltis
         visitantePenaltis = palpite.resultado.visitanteVencedorPenaltis
+        palpiteId = palpite.id
       }
 
       if (partida.resultado != null) {
@@ -145,6 +165,7 @@ export class BolaoPalpiteComponent implements OnInit {
 
       this.gameList.push({
         partidaId: partida.id,
+        palpiteId: palpiteId,
         mandanteId: partida.mandanteId,
         mandanteNome: mandanteNome,
         mandanteUrl: ICONS_BASE_PATH + mandanteUrl,
@@ -160,6 +181,36 @@ export class BolaoPalpiteComponent implements OnInit {
         endGame: endGame,
         data: data.toLocaleString()
       });
+
+
     }
+    this.createForm()
+  }
+
+  onSubmit() {
+    for (const control of this.formPalpites.controls) {
+      control.get("golsMandante")?.value
+    }
+  }
+
+  createForm() {
+    const form = new FormArray<FormGroup>([])
+    const groups = this.gameList.map(game => {
+      return new FormGroup({
+        golsMandante: new FormControl(game.mandanteGols),
+        golsVisitante: new FormControl(game.visitanteGols),
+        vencedorPenaltis: new FormControl(''),
+      },
+        [ValidatePalpite.PalpiteEmAmbos("golsMandante", "golsVisitante"),
+        ValidatePalpite.EmpateSemPenaltis(game.tipo, "golsMandante", "golsVisitante", "vencedorPenaltis")]
+      )
+    })
+
+    groups.forEach(group => form.push(group))
+    this.formBolao.setControl("palpites", form)
+  }
+
+  get formPalpites(): FormArray {
+    return this.formBolao?.get("palpites") as FormArray
   }
 }
