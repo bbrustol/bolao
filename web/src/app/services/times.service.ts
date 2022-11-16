@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Times } from '../models/times';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Times } from '../models/times';
 
 export class TimesService {
 
-  url = 'http://localhost:8080/api/times'; // api rest fake
+  url = environment + 'times'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Bolao } from '../models/bolao';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Bolao } from '../models/bolao';
 
 export class BolaoService {
 
-  url = 'http://localhost:8080/api/boloes'; // api rest fake
+  url = environment + 'boloes'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

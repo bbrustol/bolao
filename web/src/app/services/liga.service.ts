@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Liga } from '../models/liga';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Liga } from '../models/liga';
 
 export class LigaService {
 
-  url = 'http://localhost:8080/ligas'; // api rest fake
+  url = environment + 'ligas'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Palpite } from '../models/palpite';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Palpite } from '../models/palpite';
 
 export class PalpiteService {
 
-  url = 'http://localhost:8080/api/palpites'; // api rest fake
+  url = environment + 'palpites'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
