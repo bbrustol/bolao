@@ -10,7 +10,7 @@ import { Partidas } from '../models/partidas';
 
 export class PartidasService {
 
-  url = 'http://localhost:8008/api/partidas'; // api rest fake
+  url = 'http://localhost:8080/api/partidas'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

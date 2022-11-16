@@ -51,7 +51,7 @@ export class BolaoPalpiteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUsuario();
+    this.getTimes()
   }
 
   getUsuarioById(id: number) {
@@ -120,21 +120,21 @@ export class BolaoPalpiteComponent implements OnInit {
       for (let m = 0; m < this.timesList.length; m++) {
         if (this.partidasList[i].mandanteId == this.timesList[m].id) { 
           mandanteNome = this.timesList[m].nome;
-          mandanteUrl = this.timesList[m].urlLogo
+          mandanteUrl = this.timesList[m].urlLogo || ''
         }
 
         if (this.partidasList[i].visitanteId == this.timesList[m].id) { 
           visitanteNome = this.timesList[m].nome;
-          visitanteUrl = this.timesList[m].urlLogo
+          visitanteUrl = this.timesList[m].urlLogo || ''
         }
       }
 
       for (let m = 0; m < this.palpiteList.length; m++) {
         if (this.partidasList[i].id == this.palpiteList[m].partidaId) { 
-            mandanteGols = this.palpiteList[m].resultado.golsMandante;
-            visitanteGols = this.palpiteList[m].resultado.golsVisitante;
-            mandantePenaltis = this.palpiteList[m].resultado.mandanteVencedorPenaltis;
-            visitantePenaltis = this.palpiteList[m].resultado.visitanteVencedorPenaltis;
+            mandanteGols = this.palpiteList[m].resultado ? this.palpiteList[m].resultado.golsMandante : -1;
+            visitanteGols = this.palpiteList[m].resultado ? this.palpiteList[m].resultado.golsVisitante : -1;
+            mandantePenaltis = this.palpiteList[m].resultado ? this.palpiteList[m].resultado.mandanteVencedorPenaltis : false;
+            visitantePenaltis = this.palpiteList[m].resultado ? this.palpiteList[m].resultado.visitanteVencedorPenaltis : false;
         }
       }
 

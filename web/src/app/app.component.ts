@@ -9,8 +9,7 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   isLoggedIn = false;
-  username?: string;
-  token?: string;
+  usuario?: string;
 
   constructor(private storageService: StorageService, private authService: AuthService) { }
 
@@ -20,8 +19,7 @@ export class AppComponent {
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
 
-      this.username = user.usuario;
-      this.token = user.token
+      this.usuario = user.usuario;
     }
   }
 

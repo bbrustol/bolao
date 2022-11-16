@@ -7,5 +7,5 @@ export interface Partidas {
     data: string;
     tipo: string;
     id: number;
-    resultado: ResultadoPartidas;
+    resultado: ResultadoPartidas | undefined;
 }

@@ -8,7 +8,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     constructor(private storageService: StorageService) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const user = this.storageService.getUser()
-        if (user) {
+        if (user && user.token) {
             req = req.clone({
                 headers: req.headers.append("Authorization", `Bearer ${user.token}`)
             })
