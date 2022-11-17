@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { StorageService } from './services/storage.service';
 import { AuthService } from './services/auth.service';
 import { BolaoService } from './services/bolao.service';
-import { Bolao } from './models/bolao';
+import { Boloes } from './models/bolao';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ import { Bolao } from './models/bolao';
 export class AppComponent {
   isLoggedIn = false;
   usuario?: string;
-  boloes: Bolao[] = []
+  boloes: Boloes[] = []
 
   constructor(private storageService: StorageService, private authService: AuthService,
      private bolaoService: BolaoService) { }

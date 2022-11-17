@@ -3,19 +3,21 @@
 </head>
 
 <body>
-    <div class="boxTop">
+    <div class="boxTop" [ngClass]="
+        {'show': boloes.length != 0,
+        'hide': boloes.length == 0}">
         <div class="box">
             <select *ngFor="let bolao of boloes" [(ngModel)]="bolaoAtivo">
                 <option value="{{bolao.id}}">{{bolao.nome}}</option>
             </select>
             <select *ngIf="boloes.length == 0">
-                <option>Bolao Bem Bolado</option>
+                <option>Selecione o seu bolão</option>
             </select>
         </div>
 
         <button [routerLink]="'bolao-palpites/' + bolaoAtivo">Palpites</button>
 
-        <button>Classificacao</button>
+        <button [routerLink]="'classificacao/' + bolaoAtivo">Classificacao</button>
 
         <button>Regras</button>
     </div>

@@ -21,6 +21,17 @@
     margin-top: 20px;
  }
 
+  .boxTop pontuacao {
+    position: relative;
+    float: right;
+    width: 140px;
+    height: 44px;
+    background-color: #FEA534;
+    font-size: 20px;
+
+    margin-top: 20px;
+ }
+
 .box {
   position: absolute;
       margin-top: 20px;
@@ -69,5 +80,13 @@
 
 .box select option {
   padding: 30px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }
 /*end*/

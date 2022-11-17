@@ -1,0 +1,19 @@
+<html>
+
+    <head>
+        <link rel="stylesheet" href="classificacao.component.css">
+    </head>
+
+    <body>
+        <div class="boxContainer">
+            <table>
+                <tr *ngFor="let item of classificacaoList">
+                    <td>{{item.id}}</td>
+                    <td>{{item.pontuacaoTotal}}</td>
+                    <td>{{item.usuario.nome}}</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+
+</html>

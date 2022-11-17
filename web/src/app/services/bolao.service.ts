@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { Bolao } from '../models/bolao';
+import { Boloes } from '../models/bolao';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -23,15 +23,15 @@ export class BolaoService {
   }
 
 
-  getBolao(): Observable<Bolao[]> {
-    return this.httpClient.get<Bolao[]>(this.url)
+  getBolao(): Observable<Boloes[]> {
+    return this.httpClient.get<Boloes[]>(this.url)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
-  getBolaoById(id: number): Observable<Bolao> {
-    return this.httpClient.get<Bolao>(this.url + '/' + id)
+  getBolaoById(id: number): Observable<Boloes> {
+    return this.httpClient.get<Boloes>(this.url + '/' + id)
       .pipe(
         retry(2),
         catchError(this.handleError)

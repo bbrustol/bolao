@@ -10,7 +10,7 @@ import { Usuario } from '../models/usuario';
 import { Times } from '../models/times';
 import { Partidas } from '../models/partidas';
 import { Liga } from '../models/liga';
-import { Bolao } from '../models/bolao';
+import { Boloes } from '../models/bolao';
 import { GameModel } from '../models/gameModel';
 import { Palpite } from '../models/palpite';
 
@@ -34,7 +34,7 @@ export class BolaoPalpiteComponent implements OnInit {
   timesList: Times[];
   partidasList: Partidas[];
   palpiteList: Palpite[];
-  bolaoList: Bolao[];
+  bolaoList: Boloes[];
   gameList: GameModel[];
 
   constructor(

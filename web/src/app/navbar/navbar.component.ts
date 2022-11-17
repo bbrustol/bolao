@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Bolao } from '../models/bolao';
+import { Boloes } from '../models/bolao';
 import { BolaoService } from '../services/bolao.service';
 import { StorageService } from '../services/storage.service';
 
@@ -11,7 +11,7 @@ import { StorageService } from '../services/storage.service';
 export class NavbarComponent implements OnInit {
     constructor(private bolaoService: BolaoService, private storageService: StorageService) { }
 
-    boloes: Bolao[] = []
+    boloes: Boloes[] = []
     bolaoAtivo: number = -1
     ngOnInit(): void {
         if(this.storageService.isLoggedIn()) {
@@ -28,7 +28,8 @@ export class NavbarComponent implements OnInit {
                         id: -1,
                         ligaId: -1,
                         classificacao: [],
-                        nome: "Bolao Bem Bolado"
+                        nome: "",
+                        administradorId: -1
                     }]
                 }
             })
