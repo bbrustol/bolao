@@ -14,5 +14,5 @@ export interface GameModel {
     tipo: string;
     enabledPenaltis: boolean;
     endGame: boolean;
-    data: string;
+    data: Date;
 }

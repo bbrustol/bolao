@@ -9,7 +9,7 @@ export interface Palpite {
     data: string;
     tipoResultadoPalpite: string;
     id: number;
-    resultado: ResultadoPartidas;
+    resultadoPartida: ResultadoPartidas;
 }
 
 export interface PalpiteUpsertDTO {

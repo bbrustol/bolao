@@ -10,9 +10,9 @@ import { Usuario } from '../models/usuario';
 import { Times } from '../models/times';
 import { Partidas } from '../models/partidas';
 import { Liga } from '../models/liga';
-import { Boloes } from '../models/bolao';
+import { Bolao } from '../models/bolao';
 import { GameModel } from '../models/gameModel';
-import { Palpite } from '../models/palpite';
+import { Palpite, PalpiteUpsertDTO } from '../models/palpite';
 
 import * as moment from 'moment';
 import { ICONS_BASE_PATH } from '../helper/constants';
@@ -34,8 +34,12 @@ export class BolaoPalpiteComponent implements OnInit {
   timesList: Times[];
   partidasList: Partidas[];
   palpiteList: Palpite[];
-  bolaoList: Boloes[];
+  bolaoList: Bolao[];
   gameList: GameModel[];
+
+  isSucesso = false;
+
+  erroIntegracao: string | undefined
 
   constructor(
     private usuarioService: UsuarioService,
@@ -148,10 +152,10 @@ export class BolaoPalpiteComponent implements OnInit {
       const palpite = this.palpiteList.find(palpite => palpite.partidaId == partida.id)
 
       if (palpite) {
-        mandanteGols = palpite.resultado.golsMandante
-        visitanteGols = palpite.resultado.golsVisitante
-        mandantePenaltis = palpite.resultado.mandanteVencedorPenaltis
-        visitantePenaltis = palpite.resultado.visitanteVencedorPenaltis
+        mandanteGols = palpite.resultadoPartida.golsMandante
+        visitanteGols = palpite.resultadoPartida.golsVisitante
+        mandantePenaltis = palpite.resultadoPartida.isMandanteVencedorPenaltis
+        visitantePenaltis = palpite.resultadoPartida.isVisitanteVencedorPenaltis
         palpiteId = palpite.id
       }
 
@@ -179,27 +183,60 @@ export class BolaoPalpiteComponent implements OnInit {
         tipo: partida.tipo,
         enabledPenaltis: isEnabledPenaltis,
         endGame: endGame,
-        data: data.toLocaleString()
+        data: data
       });
-
 
     }
     this.createForm()
   }
 
   onSubmit() {
-    for (const control of this.formPalpites.controls) {
-      control.get("golsMandante")?.value
+    if (this.formBolao.valid) {
+      if (this.bolaoId) {
+        const dto: PalpiteUpsertDTO[] = this.formPalpites.controls
+          .map((control, i) => {
+            return {
+              isDirty: control.dirty,
+              partidaId: this.gameList[i].partidaId,
+              bolaoId: this.bolaoId || -1,
+              id: this.gameList[i].palpiteId,
+              resultadoPartida: {
+                golsMandante: control.get('golsMandante')?.value,
+                golsVisitante: control.get('golsVisitante')?.value,
+                isMandanteVencedorPenaltis: control.get('vencedorPenaltis')?.value === 'mandante',
+                isVisitanteVencedorPenaltis: control.get('vencedorPenaltis')?.value === 'visitante'
+              }
+            }
+          }).filter(palpite => palpite.isDirty)
+
+        this.palpiteService.upsert(dto).subscribe({
+          next: data => {
+            this.isSucesso = true
+          },
+          error: err => {
+            this.isSucesso = false
+            this.formBolao.setErrors({
+              ERRO_INTEGRACAO: true
+            })
+            this.erroIntegracao = err.message || err.error.message
+          }
+        })
+      } else {
+        this.formBolao.setErrors({
+          BOLAO_INVALIDO: true
+        })
+      }
     }
   }
 
   createForm() {
     const form = new FormArray<FormGroup>([])
     const groups = this.gameList.map(game => {
+      const isDisabled = moment(game.data).isBefore(moment())
       return new FormGroup({
-        golsMandante: new FormControl(game.mandanteGols),
-        golsVisitante: new FormControl(game.visitanteGols),
-        vencedorPenaltis: new FormControl(''),
+        golsMandante: new FormControl({ value: game.mandanteGols, disabled: isDisabled }),
+        golsVisitante: new FormControl({ value: game.visitanteGols, disabled: isDisabled }),
+        vencedorPenaltis: new FormControl({ value: (game.mandanteVencedorPenaltis ? 'mandante' : game.visitanteVencedorPenaltis ? 'visitante' : undefined), disabled: isDisabled})
       },
         [ValidatePalpite.PalpiteEmAmbos("golsMandante", "golsVisitante"),
         ValidatePalpite.EmpateSemPenaltis(game.tipo, "golsMandante", "golsVisitante", "vencedorPenaltis")]
@@ -213,4 +250,17 @@ export class BolaoPalpiteComponent implements OnInit {
   get formPalpites(): FormArray {
     return this.formBolao?.get("palpites") as FormArray
   }
+
+  isPartidaPenaltis(indicePartida: number) : Boolean {
+    return this.isFaseDeGrupos(indicePartida) && this.partidasList[indicePartida].resultado?.golsMandante == this.partidasList[indicePartida].resultado?.golsVisitante
+  }
+
+  isFaseDeGrupos(indicePartida: number) : Boolean {
+    return this.gameList[indicePartida].tipo != 'GRUPOS' 
+  }
+
+  vencedorPenaltis(indicePartida: number) : string {
+    return this.partidasList[indicePartida].resultado?.isMandanteVencedorPenaltis ? this.gameList[indicePartida].mandanteNome : this.gameList[indicePartida].visitanteNome
+  } 
+
 }

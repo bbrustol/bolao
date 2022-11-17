@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { Palpite } from '../models/palpite';
+import { Palpite, PalpiteUpsertDTO } from '../models/palpite';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -41,6 +41,12 @@ export class PalpiteService {
         retry(2),
         catchError(this.handleError)
       )
+  }
+
+  upsert(palpites: PalpiteUpsertDTO[]) : Observable<Palpite[]> {
+    return this.httpClient.put<Palpite[]>(this.url + '/upsert',
+    palpites,
+    this.httpOptions)
   }
 
   // Manipulação de erros

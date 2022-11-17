@@ -5,14 +5,18 @@
 </head>
 
 <body>
-    <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
         <div class="boxContainer" [formGroup]="formBolao">
 
             <table formArrayName="palpites">
                 <tr>
-                    <th colspan="4">{{liga.nome}}</th>
+                    <th colspan="4" *ngIf="!f.submitted">{{liga.nome}}</th>
+                    <th colspan="1" *ngIf="f.submitted">{{liga.nome}}</th>
+                    <th colspan="3" *ngIf="f.submitted && isSucesso">Palpites enviados com sucesso.</th>
+                    <th colspan="3" *ngIf="f.submitted && erroIntegracao">Erro de integração: {{erroIntegracao}}</th>
+                    
                     <th>
-                        <button>
+                        <button [disabled]="!formBolao.valid || formBolao.pristine">
                             Salvar
                         </button>
                     </th>
@@ -24,7 +28,7 @@
                     <td>
                         <ul class="placar">
                             <li>
-                                {{gameList[i].data}}
+                                {{gameList[i].data.toLocaleString()}}
                             </li>
                         </ul>
                         <ul class="placar" formGroupName="{{i}}">
@@ -60,10 +64,18 @@
                         <ul *ngIf="control.errors?.['EmpateSemPenaltis']" class="alert alert-danger" role="alert">
                             Escolha o vencedor nos pênaltis
                         </ul>
+                        <ul *ngIf="partidasList[i].resultado">
+                            Resultado Final: 
+                            {{partidasList[i].resultado?.golsMandante}} X {{partidasList[i].resultado?.golsVisitante}}
+                        </ul>
+                        <ul *ngIf="partidasList[i].resultado && isPartidaPenaltis(i)">
+                            Vencedor nos pênaltis: {{vencedorPenaltis(i)}}
+                        </ul>
                     </td>
                     <td>{{gameList[i].visitanteNome}}</td>
                     <td><img src="{{gameList[i].visitanteUrl}}" /></td>
                 </tr>
+
             </table>
         </div>
     </form>

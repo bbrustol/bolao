@@ -1,6 +1,6 @@
 export interface ResultadoPartidas {
     golsMandante: number;
     golsVisitante: number;
-    mandanteVencedorPenaltis: boolean;
-    visitanteVencedorPenaltis: boolean;
+    isMandanteVencedorPenaltis: boolean;
+    isVisitanteVencedorPenaltis: boolean;
 }
