@@ -7,6 +7,14 @@
     <body>
         <div class="boxContainer">
             <table>
+                <tr>
+                    <td colspan="3">Nome do bolão: {{boloes.nome}}</td>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>Pontuação</td>
+                    <td>nome</td>
+                </tr>
                 <tr *ngFor="let item of classificacaoList">
                     <td>{{item.id}}</td>
                     <td>{{item.pontuacaoTotal}}</td>

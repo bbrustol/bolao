@@ -35,7 +35,6 @@ export class ClassificacaoComponent implements OnInit {
         next: data => {
           this.boloes  = data
           this.classificacaoList = data.classificacao
-          console.log(this.classificacaoList)
         }, error: err => {
           console.error(err)
         }
