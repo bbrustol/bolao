@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { BolaoPalpiteComponent } from './bolao-palpite/bolao-palpite.component';
 import { httpInterceptorProviders } from './helper/http.interceptor';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ClassificacaoComponent } from './classificacao/classificacao.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     RegisterComponent,
     BolaoPalpiteComponent,
-    NavbarComponent],
+    NavbarComponent,
+    ClassificacaoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
