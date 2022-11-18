@@ -12,14 +12,14 @@ export class NavbarComponent implements OnInit {
     constructor(private bolaoService: BolaoService, private storageService: StorageService) { }
 
     boloes: Boloes[] = []
-    bolaoAtivo: number = -1
+    bolaoAtivo: Boloes | undefined
     ngOnInit(): void {
         if(this.storageService.isLoggedIn()) {
             this.bolaoService.getBolao().subscribe({
                 next: data => {
                     this.boloes = data
                     if (data && data.length > 0) {
-                        this.bolaoAtivo = data[0].id
+                        this.bolaoAtivo = data[0]
                     }
                 },
                 error: err => {

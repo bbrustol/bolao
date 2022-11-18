@@ -8,17 +8,17 @@
         {'show': boloes.length != 0,
         'hide': boloes.length == 0}">
         <div class="box">
-            <select *ngFor="let bolao of boloes" [(ngModel)]="bolaoAtivo">
-                <option value="{{bolao.id}}">{{bolao.nome}}</option>
+            <select [(ngModel)]="bolaoAtivo">
+                <option *ngFor="let bolao of boloes" value="{{bolao}}">{{bolao.nome}}</option>
             </select>
             <select *ngIf="boloes.length == 0">
                 <option>Selecione o seu bolão</option>
             </select>
         </div>
 
-        <button [routerLink]="'bolao-palpites/' + bolaoAtivo">Palpites</button>
+        <button [routerLink]="'bolao-palpites/' + bolaoAtivo?.id">Palpites</button>
 
-        <button [routerLink]="'classificacao/' + bolaoAtivo">Classificacao</button>
+        <button [routerLink]="'classificacao/' + bolaoAtivo?.id">Classificacao</button>
 
         <button>Regras</button>
     </div>
