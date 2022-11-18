@@ -41,7 +41,7 @@
                             <li><input type="text" formControlName="golsVisitante" maxlength="2" size="2" />
                             </li>
                         </ul>
-                        <ul *ngIf="control.get('golsMandante')?.errors?.['PalpiteEmAmbos'] || control.get('golsVisitante')?.errors?.['PalpiteEmAmbos']" class="alert alert-danger" role="alert">
+                        <ul *ngIf="control.errors?.['PalpiteEmAmbos']" class="alert alert-danger" role="alert">
                             Preencher o palpite completo
                         </ul>
                         <ul *ngIf="gameList[i].tipo !== 'GRUPOS' && control.get('golsMandante')?.value && 
