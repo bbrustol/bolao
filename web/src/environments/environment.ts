@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: "https://meubolao-api.herokuapp.com/api/"
+  BASE_URL: "https://localhost:8080/api/"
 };
 
 /*

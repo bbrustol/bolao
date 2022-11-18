@@ -1,4 +1,4 @@
-import { ResultadoPartidas } from '../models/resultadoPartidas';
+import { ResultadoPartidas } from './resultadoPartidas'
 
 export interface Partidas {
     ligaId: number;
