@@ -9,7 +9,7 @@
         'hide': boloes.length == 0}">
         <div class="box">
             <select [(ngModel)]="bolaoAtivo">
-                <option *ngFor="let bolao of boloes" value="{{bolao}}">{{bolao.nome}}</option>
+                <option *ngFor="let bolao of boloes" [ngValue]="bolao">{{bolao.nome}}</option>
             </select>
             <select *ngIf="boloes.length == 0">
                 <option>Selecione o seu bolão</option>
