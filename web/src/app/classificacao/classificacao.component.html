@@ -14,14 +14,14 @@
                     <td colspan="3">Nome do bolão: {{boloes.nome}}</td>
                 </tr>
                 <tr>
-                    <td>id</td>
+                    <td>#</td>
                     <td>Pontuação</td>
                     <td>nome</td>
                 </tr>
                 <tr *ngFor="let item of classificacaoList">
-                    <td>{{item.id}}</td>
-                    <td>{{item.pontuacaoTotal}}</td>
-                    <td>{{item.usuario.nome}}</td>
+                    <td>{{item.classificacao}}</td>
+                    <td>{{item.pontuacao}}</td>
+                    <td>{{item.nome}}</td>
                 </tr>
             </table>
         </div>

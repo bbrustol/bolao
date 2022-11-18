@@ -42,9 +42,7 @@ export interface Usuario {
 }
 
 export interface Classificacao {
-    pontuacaoTotal: number;
-    usuario: Usuario;
-    bolao: Bolao;
-    id: number;
-    ativo: boolean;
+    pontuacao: number;
+    nome: string;
+    classificacao: number;
 }
