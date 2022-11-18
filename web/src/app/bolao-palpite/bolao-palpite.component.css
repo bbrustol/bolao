@@ -19,7 +19,7 @@ html, body {
    height: 100%;
    color:black;
    background-color: #1f299c;
-   /*background-image: linear-gradient(-20deg, #1f299c 70%, #0373ff);*/
+   background-image: linear-gradient(-20deg, #1f299c 70%, #0373ff);
    position:static;  
 }
 
