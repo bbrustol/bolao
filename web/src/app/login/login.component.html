@@ -23,17 +23,14 @@
 				<button>Login</button>
 				<div class="form-group">
 					<div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
-					  Login failed: {{ errorMessage }}
+						{{ errorMessage }}
 					</div>
 				  </div>
-				<a href="#" class="forgotPass">Forgot your pass?</a>
 
 				<hr class="line">
 
 				<div class="register">
-					<img src="imgs/fb.png" width="60" class="button">
-					<img src="imgs/google.png" width="60" class="button">
-					<a href="#" class="button" routerLink="/register">Register</a>
+					<a href="#" class="button" routerLink="/register">Registrar</a>
 				</div>
 			</div>
 		</div>

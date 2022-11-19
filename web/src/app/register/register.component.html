@@ -13,12 +13,15 @@
 			<div class="boxRegister">
 				<input type="text" placeholder="Nome" class="form-control" name="nome" [(ngModel)]="form.nome" required
 					#nome="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nome.errors }" />
+					<div class="invalid-feedback" *ngIf="nome.errors && f.submitted">
+						<div *ngIf="nome.errors['required']">Nome obrigatório</div>
+						</div>
 				<input type="email" placeholder="Email" class="form-control" name="email" [(ngModel)]="form.email" required email
 					#email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.errors }" />
 				<div class="invalid-feedback" *ngIf="email.errors && f.submitted">
-					<div *ngIf="email.errors['required']">Email is required</div>
+					<div *ngIf="email.errors['required']">Email obrigatório</div>
 					<div *ngIf="email.errors['email']">
-						Email must be a valid email address
+						Email inválido
 					</div>
 				</div>
 				<input type="password" placeholder="Senha" class="form-control" name="password"
@@ -29,14 +32,14 @@
 					[ngClass]="{ 'is-invalid': f.submitted && repeatPassword.errors }" />
 
 				<div class="invalid-feedback" *ngIf="password.errors && f.submitted">
-					<div *ngIf="password.errors['required']">Password is required</div>
+					<div *ngIf="password.errors['required']">Senha obrigatória</div>
 					<div *ngIf="password.errors['minlength']">
-						Password must be at least 6 characters
+						Senha deve ter pelo menos 6 caracteres
 					</div>
 				</div>
 				<button>Registrar</button>
 				<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-					Erro no Registro!<br />{{ errorMessage }}
+					{{ errorMessage }}
 				  </div>
 			</div>
 		</div>

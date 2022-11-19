@@ -27,7 +27,7 @@ html, body {
    -webkit-transform: translate(-50%, -50%);
    transform: translate(-50%, -50%);
    width: 60%;
-   height: 60%;
+   height: 40%;
    background-color: #16215b;
 
    border-radius: 10px;
@@ -108,8 +108,8 @@ html, body {
    align-content: center;
    vertical-align: middle;
    margin-left: 20px;
-   left: 35%;
-   top: 50%;
+   left: 50%;
+   top: 20%;
    color: #fff;
    -webkit-transform: translate(-50%, -50%);
    transform: translate(-50%, -50%);
