@@ -45,4 +45,9 @@ export interface Classificacao {
     pontuacao: number;
     nome: string;
     classificacao: number;
+    act: number;
+    atp: number;
+    asg: number;
+    ac: number;
+    acp: number;
 }

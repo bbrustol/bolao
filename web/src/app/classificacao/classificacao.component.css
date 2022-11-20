@@ -87,6 +87,10 @@ table {
    margin-top: 20px;
 }
 
+p {
+    color: white;
+}
+
 .box {
  position: absolute;
      margin-top: 20px;

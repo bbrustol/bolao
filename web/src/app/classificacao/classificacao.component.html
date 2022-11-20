@@ -15,15 +15,28 @@
                 </tr>
                 <tr>
                     <td>#</td>
-                    <td>Pontuação</td>
                     <td>nome</td>
+                    <td>Pontuação</td>
+                    <td>AT</td>
+                    <td>AT+P</td>
+                    <td>SG</td>
+                    <td>AV</td>
+                    <td>AV+P</td>
                 </tr>
                 <tr *ngFor="let item of classificacaoList">
                     <td>{{item.classificacao}}</td>
-                    <td>{{item.pontuacao}}</td>
                     <td>{{item.nome}}</td>
+                    <td>{{item.pontuacao}}</td>
+                    <td>{{item.act}}</td>
+                    <td>{{item.atp}}</td>
+                    <td>{{item.asg}}</td>
+                    <td>{{item.ac}}</td>
+                    <td>{{item.acp}}</td>
                 </tr>
             </table>
+            <div>
+                <p>Legenda: AT - Acerto Total | AT+P - Acerto Total e Pênaltis | SG - Acerto Saldo de Gols | AV - Acerto Vencedor | AV+P: Acerto Vencedor e Pênaltis</p>
+            </div>
         </div>
     </body>
 
