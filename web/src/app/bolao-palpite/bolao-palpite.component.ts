@@ -121,6 +121,7 @@ export class BolaoPalpiteComponent implements OnInit {
   }
 
   createModel() {
+    this.gameList = []
     for (const partida of this.partidasList) {
       let mandanteNome: string = "";
       let mandanteUrl: string = "";
@@ -212,6 +213,7 @@ export class BolaoPalpiteComponent implements OnInit {
         this.palpiteService.upsert(dto).subscribe({
           next: data => {
             this.isSucesso = true
+            this.getPalpite()
           },
           error: err => {
             this.isSucesso = false
