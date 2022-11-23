@@ -30,6 +30,13 @@ export class TimesService {
         catchError(this.handleError))
   }
 
+  getTimeById(id: number): Observable<Times> {
+    return this.httpClient.get<Times>(this.url + `/${id}`)
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+  }
+
 
   // Manipulação de erros
   handleError(error: HttpErrorResponse) {

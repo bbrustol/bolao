@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN"
+"http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="comparar-palpite.component.css">
+    </head>
+
+    <body>
+        <div class="boxContainer">
+            <table>
+                <tr>
+                    <td>Usuario: </td>
+                    <td><img src="{{compararPalpitesDTO.urlMandante}}" /></td>
+                    <td>{{compararPalpitesDTO.nomeMandante}}</td>
+                    <td>
+                        X                    
+                    </td>
+                    <td>{{compararPalpitesDTO.nomeVisitante}}</td>
+                    <td><img src="{{compararPalpitesDTO.urlVisitante}}" /></td>
+                </tr>
+                <tr *ngFor="let palpite of compararPalpitesDTO.palpites">
+                    <td>{{palpite.nomeUsuario}}</td>
+                    <td colspan="2">{{palpite.resultadoPartida.golsMandante}}</td>
+                    <td>X</td>
+                    <td colspan="2">{{palpite.resultadoPartida.golsVisitante}}</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+
+</html>

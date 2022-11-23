@@ -23,3 +23,15 @@ export interface PalpiteUpsertDTO {
     },
     id: number | undefined
 }
+
+export interface PalpiteUsuarioDTO extends Palpite {
+    nomeUsuario : string | undefined
+}
+
+export interface CompararPalpitesDTO {
+    nomeMandante: string,
+    nomeVisitante: string,
+    urlMandante: string | undefined,
+    urlVisitante: string | undefined,
+    palpites: PalpiteUsuarioDTO[]
+}

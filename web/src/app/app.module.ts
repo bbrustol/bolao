@@ -12,6 +12,7 @@ import { BolaoPalpiteComponent } from './bolao-palpite/bolao-palpite.component';
 import { httpInterceptorProviders } from './helper/http.interceptor';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ClassificacaoComponent } from './classificacao/classificacao.component';
+import { CompararPalpitesComponent } from './comparar-palpite/comparar-palpite.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ClassificacaoComponent } from './classificacao/classificacao.component'
     RegisterComponent,
     BolaoPalpiteComponent,
     NavbarComponent,
-    ClassificacaoComponent],
+    ClassificacaoComponent,
+    CompararPalpitesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

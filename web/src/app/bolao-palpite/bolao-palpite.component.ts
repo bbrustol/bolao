@@ -234,7 +234,7 @@ export class BolaoPalpiteComponent implements OnInit {
   createForm() {
     const form = new FormArray<FormGroup>([])
     const groups = this.gameList.map(game => {
-      const isDisabled = moment(game.data).isBefore(moment())
+      const isDisabled = this.isMatchStarted(game.data)
       return new FormGroup({
         golsMandante: new FormControl({ value: game.mandanteGols, disabled: isDisabled }),
         golsVisitante: new FormControl({ value: game.visitanteGols, disabled: isDisabled }),
@@ -264,5 +264,9 @@ export class BolaoPalpiteComponent implements OnInit {
   vencedorPenaltis(indicePartida: number) : string {
     return this.partidasList[indicePartida].resultado?.isMandanteVencedorPenaltis ? this.gameList[indicePartida].mandanteNome : this.gameList[indicePartida].visitanteNome
   } 
+
+  isMatchStarted(dataPartida: Date) : boolean {
+    return moment(dataPartida).isBefore(moment())
+  }
 
 }

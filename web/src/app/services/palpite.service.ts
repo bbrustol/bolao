@@ -43,10 +43,16 @@ export class PalpiteService {
       )
   }
 
-  upsert(palpites: PalpiteUpsertDTO[]) : Observable<Palpite[]> {
+  getPalpitesByBolaoIdAndPartidaId(bolaoId: number, partidaId: number): Observable<Palpite[]> {
+    return this.httpClient.get<Palpite[]>(this.url + `/searchAll?bolao.id=${bolaoId}&partida.id=${partidaId}`)
+      .pipe(retry(2), catchError(this.handleError))
+
+  }
+
+  upsert(palpites: PalpiteUpsertDTO[]): Observable<Palpite[]> {
     return this.httpClient.put<Palpite[]>(this.url + '/upsert',
-    palpites,
-    this.httpOptions)
+      palpites,
+      this.httpOptions)
   }
 
   // Manipulação de erros

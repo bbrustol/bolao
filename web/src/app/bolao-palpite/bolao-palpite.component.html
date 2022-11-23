@@ -41,6 +41,9 @@
                             <li><input type="text" formControlName="golsVisitante" maxlength="2" size="2" />
                             </li>
                         </ul>
+                        <ul *ngIf="isMatchStarted(gameList[i].data)">
+                            <a [routerLink]="'/comparar-palpites/' + bolaoId + '/' + gameList[i].partidaId">Comparar Palpite</a>
+                        </ul>
                         <ul *ngIf="control.errors?.['PalpiteEmAmbos']" class="alert alert-danger" role="alert">
                             Preencher o palpite completo
                         </ul>
